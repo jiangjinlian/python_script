@@ -108,8 +108,7 @@ def notify_dd(title=None, msg=None):
         # msg = msg.replace(newLineString, '\n')
         notify_msg += '\n\n%s' % msg
         #infoApi.send_channel_msg(channel_id, notify_msg)
-        #notify_url = "https://oapi.dingtalk.com/robot/send?access_token=9fae5015c71453b3cc28512dafa9c4c5aa51e16ae51fb353b23759564ce9f443"
-        notify_url = "https://oapi.dingtalk.com/robot/send?access_token=19429c85aaa167668ab7dbceca0766548294c122b9c1e8916647218271a3edc1"
+        notify_url = "https://oapi.dingtalk.com/robot/send?access_token=26c4a4be8c2aa3dd08c126c4455525bc4ca51ee47ec55b09e334906be0740265"
         params = dict()
         params["msgtype"] = "text"
         # params["text"] = {"content": "test"}
