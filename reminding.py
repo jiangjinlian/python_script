@@ -3,7 +3,7 @@
 # Created by jiangjinlian on 2017/8/22
 
 import sys
-sys.path.appent('/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages')
+sys.path.append('/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages')
 import requests
 import demjson
 import json
