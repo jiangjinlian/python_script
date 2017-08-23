@@ -1,6 +1,9 @@
 #!/bin/usr/env python
 # -*- coding:utf-8 -*-
+# Created by jiangjinlian on 2017/8/22
 
+import sys
+sys.path.appent('/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages')
 import unittest
 from selenium import webdriver
 import time
