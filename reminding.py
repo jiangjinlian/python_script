@@ -101,7 +101,7 @@ def notify_dd(title=None, msg=None):
     #infoApi = InfoSysAPI(API_KEY, API_SECRET)
     if title:
         notify_msg = title
-        else:
+    else:
             notify_msg = ''
     if msg and msg != 'None':
         # msg = msg.replace(newLineString, '\n')
