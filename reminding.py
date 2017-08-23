@@ -18,39 +18,37 @@ def get_msg():
     url = 'https://jira.bytedance.com/rest/api/2/search?jql=project%20=%20TTINTPGC%20and%20status%20in%20(Open,%20%22In%20Progress%22,%20Reopened)AND%20issuetype%20%3D%20Bug%20'
     
     headers = dict()
-    headers[
-            "User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30"
-            headers[
-                    "Cookie"] = "%s; _ga=GA1.2.1001356093.1470803696" % get_session_id()
-            headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30"
+    headers["Cookie"] = "%s; _ga=GA1.2.1001356093.1470803696" % get_session_id()
+    headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
             
-            response = requests.get(url, verify=False, headers=headers)
+    response = requests.get(url, verify=False, headers=headers)
             
-            data = demjson.decode(response.text)
+    data = demjson.decode(response.text)
             
-            issues = data.get("issues")
+    issues = data.get("issues")
             
-            issue_total_count = data.get("total")
-            msg += "Total: "
-            msg += str(issue_total_count)
-            msg += "\n\n"
+    issue_total_count = data.get("total")
+    msg += "Total: "
+    msg += str(issue_total_count)
+    msg += "\n\n"
             
-            issue_assignee_count = dict()
+    issue_assignee_count = dict()
             
-            for issue in issues:
-                assignee = issue.get("fields").get("assignee").get("displayName")
-                    if assignee in issue_assignee_count.keys():
-                        issue_assignee_count[assignee] += 1
-                            else:
-                                issue_assignee_count[assignee] = 1
+    for issue in issues:
+        assignee = issue.get("fields").get("assignee").get("displayName")
+        if assignee in issue_assignee_count.keys():
+           issue_assignee_count[assignee] += 1
+        else:
+           issue_assignee_count[assignee] = 1
 
-reverse_list = sorted(issue_assignee_count.items(), lambda x, y: cmp(x[1], y[1]), reverse=True)
+    reverse_list = sorted(issue_assignee_count.items(), lambda x, y: cmp(x[1], y[1]), reverse=True)
     
     count_sort = defaultdict(list)
     for key, value in reverse_list:
         count_sort[value].append(key)
 
-count_sort_desc = sorted(count_sort.items(), lambda x, y: cmp(x[0], y[0]), reverse=True)
+    count_sort_desc = sorted(count_sort.items(), lambda x, y: cmp(x[0], y[0]), reverse=True)
     score_user_count = 0
     score_rank = 1
     
@@ -75,7 +73,7 @@ count_sort_desc = sorted(count_sort.items(), lambda x, y: cmp(x[0], y[0]), rever
     msg += "Click to see the detail  https://jira.bytedance.com/browse/%s?filter=13359" % issue_key
     # msg += "Click to see the detail  https://jira.bytedance.com/browse/TTINTPGC-77?filter=13359"
 
-return msg
+    return msg
 
 
 def get_session_id():
