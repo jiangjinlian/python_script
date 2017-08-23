@@ -14,7 +14,7 @@ sys.setdefaultencoding('utf-8')
 class Test_mail_126_login(unittest.TestCase):
     
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome('/usr/local/bin/chromedriver')
     
     def test_mail_126_login(self):
         self.driver.get("https://cas.shmtu.edu.cn/cas/login?service=http%3A%2F%2Fportal.shmtu.edu.cn%2Fdcp%2Findex.jsp")
